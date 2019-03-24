@@ -1,12 +1,20 @@
 <div class="container moviesContainer row mx-auto">
-  <div class="card-group col-md-3 col-sm-12" *ngFor="let movie of movies | async">
+  <div class="card-group col-md-3 col-sm-12 mb-1 mt-1" *ngFor="let movie of movies | async">
     <div class="card">
       <img src="{{imgUrl}}{{movie.poster_path}}" class="card-img-top" alt="{{movie.title}}">
       <div class="card-body">
-        <p class="card-text"><small class="text-muted">{{movie.release_date | dateFormats:'LL' }}</small></p>
+        <p class="card-text text-left"><small class="text-light">{{movie.release_date | dateFormats:'LL' }}</small></p>
         <h5 class="card-title">{{movie.title}}</h5>
         <p class="card-text overview">{{movie.overview}}</p>
-        <p class="card-text"><small class="text-muted"><!--rating [(ngModel)]="{{movie.vote_average}}" [max]="10" [readonly]="true"></rating--></small></p>
+        <p class="card-text"><small class="text-light"></small></p>
+        <div>
+          <rating [(ngModel)]="movie.vote_average" [max]="10" [readonly]="true" [customTemplate]="tt"></rating>
+          <ng-template #tt let-i="index" let-v="value">
+            <button class="btn btn- btn-{{i < v ? 'warning' : 'default'}}">
+              {{i < v ? '&#9733;' : '&#9734;'}}
+            </button>
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>
