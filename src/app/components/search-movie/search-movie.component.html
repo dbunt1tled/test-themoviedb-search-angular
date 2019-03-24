@@ -1,0 +1,23 @@
+<div>
+<ul class="nav">
+  <li class="nav-item">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon">Enter Film</span>
+      </div>
+      <input type="text" class="form-control"
+             [(ngModel)]="asyncSelected"
+             [typeaheadAsync]="true"
+             [typeahead]="dataSource"
+             (typeaheadLoading)="changeTypeaheadLoading($event)"
+             (typeaheadOnSelect)="typeaheadOnSelect($event)"
+             [typeaheadOptionsLimit]="7"
+             typeaheadOptionField="original_title"
+             placeholder="" id="fieldSearch" aria-describedby="basic-addon">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="basic-addon">Search</button>
+      </div>
+    </div>
+  </li>
+</ul>
+</div>

@@ -1,0 +1,13 @@
+<div class="container moviesContainer row mx-auto">
+  <div class="card-group col-md-3 col-sm-12" *ngFor="let movie of movies | async">
+    <div class="card">
+      <img src="{{imgUrl}}{{movie.poster_path}}" class="card-img-top" alt="{{movie.title}}">
+      <div class="card-body">
+        <p class="card-text"><small class="text-muted">{{movie.release_date | dateFormats:'LL' }}</small></p>
+        <h5 class="card-title">{{movie.title}}</h5>
+        <p class="card-text overview">{{movie.overview}}</p>
+        <p class="card-text"><small class="text-muted"><!--rating [(ngModel)]="{{movie.vote_average}}" [max]="10" [readonly]="true"></rating--></small></p>
+      </div>
+    </div>
+  </div>
+</div>
